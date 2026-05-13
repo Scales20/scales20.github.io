@@ -2,7 +2,87 @@
 <html>
 <body>
 
-<p>SCAGO</p>
+<h1>SCAGO</h1>
+
+<h2>Context voor en rol binnen het project</h2>
+
+Ik heb dit project tijdens mijn tweedejaarsstage gedaan voor het bedrijf IRP/WOSI. Het project betrof het systeem genaamd SCAGO (wat staat voor "Students Come And Go"), dat wordt gebruikt door de Faculteit Business & Economics (FBE) van de HvA.
+De FBE gebruikt SCAGO om uitwisselingsstudenten bij de HvA in te schrijven en zich voor de vakken die zij willen doen aan te melden. IPR/WOSI heeft op de achtergrond gewerkt aan het integreren van een volledige studentvolgsysteem hiermee, en ik werd, samen met een andere stagair, aan deze opdracht toegewezen. Er was al redelijk veel aan het systeem gedaan; ik ben vooral bezig geweest met het verbeteren ervan en het mogelijk maken cijfers te geven.
+Tegelijkertijd vroeg de FBE IRP/WOSI om enkele verbeteringen aan het bestaande systeem; ik ben hier ook aan toegewezen.
+
+Ik heb de verbeteringen helemaal zelf afgerond. Voor het studentvolgsysteem heb ik het grootste deel van het werk dat is geleverd gedaan, inclusief alles dat met de studenten te maken heeft, en een systeem waarin leraren cijfers kunnen geven.
+
+<h2>Omschrijving en afbeeldingen</h2>
+
+Het studentvolgsysteem is nu voor de student bereikbaar vanaf de header op de hoofdpagina, door op "Units" te klikken. Als de student dit doet, komt hij op de volgende pagina terecht:
+
+<img src="./assets/Scago 1.png" />
+
+Hier kan de student de "units" zien waarvoor hij is ingeschreven, met hun status, het vak waarbij zij horen, hun begin- en einddatum, het aantal ECTS (Europese studiepunten) dat ze hebben, het aantal deliverables dat is ingeleverd, op hoeveel items ze feedback hebben gekregen, en wat voor cijfer hij voor elke unit heeft.
+
+Het symbool aan de linkerkant geeft de status van de unit weer; als het bijvoorbeeld groen met een vinkje is, is de unit goed afgerond, en als het blauw met een afspeelsymbool is, is de unit nu bezig. De status kan ook grijs met een klokje zijn, als de unit nog niet is begonnen, of rood, als de unit niet is behaald.
+
+Er kunnen meerdere "units" per "course" zijn; de "unit" komt overeen met een vak, terwijl de "course" een semester is. De "deliverables" zijn opdrachten die moeten worden ingeleverd; als nog niet alle opdrachten zijn ingeleverd, is de badge grijs, en deze wordt groen als alles is ingeleverd. De kolom met feedback geeft weer hoeveel opdrachten voor de unit ongelezen feedback hebben.
+
+Alle kolommen kunnen worden gesorteerd door op de links in de header te klikken, en ze kunnen worden gefilterd via de velden erboven.
+
+Onder deze tabel is een tabel met "alerts" te zijn; dit zijn meldingen over de vakken die de student volgt. Deze kunnen ook worden gesorteerd en verwijderd door op de "dismiss"-knop te drukken.
+
+Als de gebruiker op een alert klikt, komt hij op deze pagina terecht:
+
+<img src="./assets/Scago 2.png" />
+
+Hier is de volledige tekst van de melding te zien, samen met mogelijk studiemateriaal dat de docent heeft toegevoegd; er is ook te zien voor welke periodes deze melding geldt (bijvoorbeeld alleen voor jaar 1).
+
+Als de student in plaats hiervan op een van de units klikt, komt hij op deze pagina terecht:
+
+<img src="./assets/Scago 3.png" />
+
+Hier staat informatie over de unit, zoals de duur en wat de leraren ervoor zijn. Het is hier mogelijk om terug naar de vorige pagina te gaan, via de link "Go back to the course overview".
+
+Aan de linkerkant is een paneel dat het cijfer voor de unit aangeeft; als deze nog niet is gegeven, staat dat er. Anders is te zien wat het cijfer is en wie het wanneer heeft gegeven.
+
+Aan de rechterkant staat er een paneel met deliverables: hier zijn de status, de naam, mogelijke feedback, het cijfer, en de inleverdatum te zien. De status kan een blauw speelsymbool zijn als de deliverable open is, een geel papieren vliegtuigje als de deliverable ingeleverd is (maar nog niet goedgekeurd), een groen vinkje als het is goedgekeurd, en een rode klok als de deliverable te laat is ingeleverd. Dit paneel kan ook worden gesorteerd.
+
+Als er feedback op een deliverable is geleverd, ziet dit er als volgt uit:
+
+<img src="./assets/Scago 4.png" />
+
+Het nummer houdt bij hoeveel verschillende opmerkingen zijn geplaatst.
+
+Als de gebruiker in deze tabel op een rij klikt, komt hij op deze pagina terecht:
+
+<img src="./assets/Scago 5.png" />
+
+Hier is de informatie over de unit ook te zien. De gebruiker kan links een herinneringsemail laten sturen een bepaald aantal dagen voordat de deliverable moet worden ingeleverd. Daaronder is het cijfer voor de deliverable te zien.
+Rechts hiervan is het paneel waar de deliverable kan worden ingeleverd; bovenaan zijn de titel en de omschrijving ervan te zien, en daaronder kan een bestand worden ingeleverd. Er is hieronder een vak om opmerkingen over de deliverable te plaatsen (waarvoor rich text beschikbaar is), en er is een optie om de huidige versie op te slaan zonder het in te leveren.
+
+Als de student een versie heeft ingeleverd, ziet dit paneel er als volgt uit:
+
+<img src="./assets/Scago 6.png" />
+
+Er kunnen onbeperkt versies worden ingeleverd, totdat de leraar de deliverable goed heeft gekeurd. Feedback wordt hier als volgt weergegeven:
+
+<img src="./assets/Scago 7.png" />
+
+Deze afbeelding laat ook het tabblad met "Review progress" zien, waarin de voortgang van het nakijken is te zien. Als de student naar een bepaalde versie gaat, is hierin de feedback die de leraar heeft gegeven te zien, samen met een banner die aangeeft dat de deliverable is nagekeken. Als de deliverable is geaccepteerd, ziet het er als volgt uit:
+
+<img src="./assets/Scago 8.png" />
+
+Op het informatiepaneel over de unit is er ook een link naar een pagina met "events":
+
+<img src="./assets/Scago 9.png" />
+
+Dit is een kalender voor de unit, waarin leraren kunnen neerzetten wat er op elke dag wordt gedaan. De gebruiker kan ook op een dag klikken om meer details te zien:
+
+<img src="./assets/Scago 10.png" />
+
+
+Vanaf de hoofdpagina kan de student ook naar een voortgangspagina gaan:
+
+<img src="./assets/Scago 11.png" />
+
+Hier zijn de courses van de student te zien (en deze tabel kan ook worden gefilterd en gesorteerd). Als de gebruiker hier op een rij klikt, komt hij terecht op de pagina met units, waarop alleen de units van die specifieke course zijn te zien.
 
 </body>
 </html>
