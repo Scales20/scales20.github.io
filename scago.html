@@ -84,5 +84,121 @@ Vanaf de hoofdpagina kan de student ook naar een voortgangspagina gaan:
 
 Hier zijn de courses van de student te zien (en deze tabel kan ook worden gefilterd en gesorteerd). Als de gebruiker hier op een rij klikt, komt hij terecht op de pagina met units, waarop alleen de units van die specifieke course zijn te zien.
 
+
+Voor het deel van de applicatie dat voor de leraren bedoeld is, heb ik meer verspreid aanpassingen gedaan. Vanaf de pagina waar leraren hun courses kunnen zien, hebben zij nu toegang tot een pagina met een overzicht van events voor deze cluster:
+
+<img src="./assets/Scago 12.png" />
+
+Vanaf deze pagina kan de leraar elke event bekijken, bewerken, en verwijderen; er kunnen ook nieuwe events worden toegevoegd.
+
+Een paneel met dezelfde functionaliteit is nu te zien op de pagina voor een individuele course.
+
+Op de pagina voor een vak kunnen leraren nu ook specificeren wat voor cijfers zij willen gebruiken: een schaal van 1 tot 10, of een schaal met vier niveau's, bijvoorbeeld "onder niveau", "in ontwikkeling", "op niveau", en "boven niveau".
+
+Hieronder is de pagina te zien waar dit kan:
+
+<img src="./assets/Scago 13.png" />
+
+Meldingen en deliverables waren eerst hetzelfde ding; ik heb deze geheel uit elkaar getrokken en aparte pagina's voor allebei aangemaakt. Deze zijn ook op de pagina voor het vak te zien:
+
+<img src="./assets/Scago 14.png" />
+
+
+Ik heb het meeste werk gedaan aan de pagina's waar leraren cijfers kunnen geven. Als de leraren hiernaartoe gaan, zien zij eerst deze pagina:
+
+<img src="./assets/Scago 15.png" />
+
+Hier zijn de verschillende leerjaren te zien waarvoor zij les hebben gegeven (en zullen geven). Links van het jaar is de status te zien (afgerond, zoals weergegeven door het doosje; bezig, zoals aangegeven door het groene afspeelsymbool; en nog niet begonnen, zoals het klokje aangeeft). Rechts ervan is te zien hoeveel studenten zich voor elk jaar hebben ingeschreven voor de vakken die de leraar geeft.
+
+Als de leraar op een jaar klikt, komt hij op deze pagina terecht:
+
+<img src="./assets/Scago 16.png" />
+
+Hier zijn de courses te zien die de leraar geeft. Verder zijn het aantal studenten per course te zien, en rechts het aantal vakken en de aantal deliverables. Bij de vakken geeft het getal in het blauwe bolletje aan hoeveel vakken er nog niet zijn afgerond door studenten, en het groene bolletje geeft aan hoeveel er wel zijn afgerond. Voor de deliverables geeft het grijze bolletje aan hoeveel er nog niet zijn ingeleverd, het oranje bolletje hoeveel er nog moeten worden nagekeken, en het groene bolletje hoeveel er zijn goedgekeurd.
+
+Elk bolletje heeft een tooltip, zodat gebruikers kunnen zien wat het inhoudt:
+
+<img src="./assets/Scago 17.png" />
+
+Op deze pagina is verder ook te zien hoeveel inleveringen moeten worden bekeken (via de oranje tekstballon). Als de leraar op het oogje klikt, komt hij op de pagina met informatie over de course terecht, en als hij op de naam van de course klikt, komt hij op de volgende pagina terecht:
+
+<img src="./assets/Scago 18.png" />
+
+De pagina voor de vakken werkt hetzelfde als de pagina voor de courses, behalve dat de gegevens nu alleen voor dit specifieke vak zijn. Als de leraar hier op de titel van het vak klikt, komt hij hier terecht:
+
+<img src="./assets/Scago 19.png" />
+
+Op deze pagina is de voortgang van studenten in dit vak te zien. Links is de status te zien (die hetzelfde werkt als de status die studenten zelf kunnen zien); rechts zijn de tijd van inschrijving, het cijfer voor het vak, en de staat van de deliverables te zien.
+
+Als de leraar hier op een gebruiker klikt, komt hij op deze pagina terecht:
+
+<img src="./assets/Scago 20.png" />
+
+Deze werkt grotendeels hetzelfde als de pagina die een student voor een vak ziet. Links onderaan kan een cijfer voor het vak worden gegeven. Het is mogelijk dit cijfer aan te passen of te verwijderen:
+
+<img src="./assets/Scago 21.png" />
+
+Hier kunnen zowel cijfers als tekst worden ingevoerd, afhankelijk van welke optie het vak heeft.
+
+Als de leraar in de tabel rechts op een deliverable klikt, komt hij op de volgende pagina terecht:
+
+<img src="./assets/Scago 22.png" />
+
+Hier zijn de verschillende versie te zien die de student heeft ingeleverd, met bestanden en opmerkingen. Als de leraar hier op de knop "Mark as reviewed" klikt, is het mogelijk feedback te geven aan de student:
+
+<img src="./assets/Scago 23.png" />
+
+De leraar kan ook op de knop "Accept this deliverable" klikken, wat ervoor zorgt dat de student geen verdere versies in kan leveren. Als blijkt dat er toch nog een nieuwe versie hoort te komen, kan de leraar dit ongedaan maken:
+
+<img src="./assets/Scago 24.png" />
+
+Onafhankelijk hiervan is het mogelijk een cijfer te geven voor de deliverable; dit cijfer kan ook worden verwijderd of aangepast als het nodig is:
+
+<img src="./assets/Scago 25.png" />
+
+
+Hierbuiten heb ik nog enkele dingen op de website aangepast:
+
+* Ik heb elke pagina een titel gegeven, zodat duidelijk is waar ze voor zijn.
+
+<img src="./assets/Scago 26.png" />
+
+
+* Op de pagina waar alle gebruikers van SCAGO te zien zijn, konden zij worden gefilterd op of zij uit Europa of niet kwamen. Dit filter zag er zo uit:
+
+<img src="./assets/Scago 27.png" />
+(filter uit)
+
+<img src="./assets/Scago 28.png" />
+(alleen Europese studenten)
+
+<img src="./assets/Scago 29.png" />
+(alleen niet-Europese studenten)
+
+Ik werd gevraagd dit te herontwerpen; het eindresultaat is dit:
+
+<img src="./assets/Scago 30.png" />
+
+Het is nu mogelijk te filteren op studenten uit de EU, studenten uit Europa maar niet de EU (bijv. Noorwegen en Zwitserland), en studenten buiten Europa.
+
+* Ik heb een Rich Text Editor toegevoegd aan de pagina om courses mee te bewerken.
+
+* Ik heb het mogelijk gemaakt dat studenten de tabel met hun inschrijvingen kunnen sorteren.
+
+--
+
+Hierbuiten heb ik ook verscheidene aanpassingen gemaakt waar de FBE om vroeg. De eerste hiervan betreft de rapporten die kunnen worden geëxporteerd op de pagina waar alle gebruikers zijn te zien.
+Ik werd gevraagd het rapport voor de nominaties van studenten en dat over de geaccepteerde studenten samen te voegen; verder werd ik gevraagd verscheidene kolommen te verwijderen (zoals of de student huisvesting wil, de aanmelddatum voor SCAGO en de validatiestatus van hun aanmelding). Ik werd verder ook gevraagd automatisch de gegevens van de FBE in te vullen in het rapport, en om automatisch in te vullen of de student uit de EU komt.
+
+Ik heb dit alles voor elkaar weten te krijgen zoals mij werd gevraagd (hiervan kan ik geen voorbeeld geven omdat de rapporten persoonlijke informatie bevatten en ik geen lege heb).
+
+Ik heb verder bij de pagina waar studenten kunnen worden genomineerd twee vragen toegevoegd: of de student weet dat de vakken die ze volgen op "bachelor year 3 level" zijn, en of zij verplicht courses moeten volgen bij de HvA.
+
+Hierna heb ik op de pagina waar studenten zich kunnen aanmelden een vraag verwijderd die om "diëetvereisten" vroeg, samen met een vraag die om het studentennummer bij het vorige instituut vroeg. Ik heb hier ook duidelijker gemaakt welk adres precies van de student wordt gevraagd en een vraag over het Nederlands adres van de student verwijderd.
+
+Tenslotte heb ik ervoor gezorgd dat studenten minimaal 3 backupcourses moeten hebben <i>tenzij</i> zij een minor zowel als eerste en als backupcourse hebben. Ik heb verder het vak waar een student opmerkingen in kan schrijven duidelijker gemaakt; eerst had dit een lichtgrijze rand en tekst (hoewel het blauw opgloeide als iemand erop klikte), maar nu heeft het een dikke zwarte rand en donkerdere tekst. Uiteindelijk heb ik ervoor gezorgd dat de student onmiddelijk nu het submitten van de aanmelding wordt doorgestuurd naar de pagina om het studieplan te ondertekenen.
+
+<h2>Waarop ben ik trots?</h2>
+
 </body>
 </html>
