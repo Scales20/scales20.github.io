@@ -189,7 +189,7 @@ Het is nu mogelijk te filteren op studenten uit de EU, studenten uit Europa maar
 
 Hierbuiten heb ik ook verscheidene aanpassingen gemaakt waar de FBE om vroeg. De eerste hiervan betreft de rapporten die kunnen worden geëxporteerd op de pagina waar alle gebruikers zijn te zien.
 Ik werd gevraagd het rapport voor de nominaties van studenten en dat over de geaccepteerde studenten samen te voegen; verder werd ik gevraagd verscheidene kolommen te verwijderen (zoals of de student huisvesting wil, de aanmelddatum voor SCAGO en de validatiestatus van hun aanmelding). Ik werd verder ook gevraagd automatisch de gegevens van de FBE in te vullen in het rapport, en om automatisch in te vullen of de student uit de EU komt.
-
+(
 Ik heb dit alles voor elkaar weten te krijgen zoals mij werd gevraagd (hiervan kan ik geen voorbeeld geven omdat de rapporten persoonlijke informatie bevatten en ik geen lege heb).
 
 Ik heb verder bij de pagina waar studenten kunnen worden genomineerd twee vragen toegevoegd: of de student weet dat de vakken die ze volgen op "bachelor year 3 level" zijn, en of zij verplicht courses moeten volgen bij de HvA.
@@ -200,5 +200,95 @@ Tenslotte heb ik ervoor gezorgd dat studenten minimaal 3 backupcourses moeten he
 
 <h2>Waarop ben ik trots?</h2>
 
+Het eerste ding waarop ik trots ben is de manier waarop ik de titels voor pagina's heb geïmplementeerd. In het geval van de pagina's om objecten (zoals vakken, courses, gebeurtenissen, gebruikers, enz.) te bewerken en aan te maken, is de pagina in de code dezelfde, hoewel ze wel andere URL's hebben. Dit maakt het onmogelijk deze pagina's aparte titels te geven via de gewone manier; om dit probleem te overkomen, heb ik dit gedaan:
+
+```javascript
+    $(document).ready(function () {
+        if (window.location.href.indexOf('create') > -1) {
+            $('title').text('Create cluster - Demo Students Come &amp; Go')
+        }
+
+        $('title').each(function () {
+            $(this).html($(this).html().split('amp;').join(""))
+        })
+    })
+```
+
+De standaardtitel voor de pagina in dit voorbeeld is "Edit cluster - Demo Students Come & Go"; als er echter "create" in de URL staat, wat aangeeft dat dit de pagina is om een course te maken. De titel wordt dan aangepast naar "Create cluster - Demo Students Come & Go".
+
+Dit is voor elke pagina met meerdere mogelijke titels gedaan, bijvoorbeeld ook voor de pagina waarop huidige en gearchiveerde nominaties te zien zijn.
+
+Ik ben ook trots op de manier waarop ik het aantal deliverables in gekleurde bolletjes op de pagina's van de leraren. Ik heb lang moeite gehad om de juiste aantallen te tonen, aangezien de deliverables van toekomstige semesters werden meegeteld. Het duurde redelijk lang voordat ik uiteindelijk de oplossing vond, die wel redelijk simpel is:
+
+```java
+			List<EnrollmentClusterUnit> enrollmentClusterUnits = enrollmentClusterUnitService.getCurrentEnrollmentClusterUnitsByCluster(clusterStat.getCluster().getId());
+			List<Integer> subtractList = processECUS(enrollmentClusterUnits);
+
+			long numDeliverables = clusterStat.getNumDeliverables();
+			numDeliverables -= subtractList.get(0);
+			clusterStat.setNumDeliverables(numDeliverables);
+```
+
+Dit is de code die wordt gebruikt om het totaal aantal deliverables per course te berekenen. Deze haalt alle deliverables op, samen met alleen de toekomstige deliverables; dan wordt het aantal toekomstige deliverables van het totaal afgetrokken, waardoor het aantal huidige deliverables overblijft.
+
+De functie "processECUS" is het ook waard om te tonen:
+
+```java
+	public List<Integer> processECUS(List<EnrollmentClusterUnit> enrollmentClusterUnits) {
+
+		ClusterPeriod realClusterPeriod = getCurrentPeriod();
+
+		List<Integer> toSubtractList = new ArrayList<>();
+
+		int toSubtract = 0;
+		int toSubtractOpen = 0;
+		int toSubtractWaiting = 0;
+		int toSubtractAccepted = 0;
+		for (EnrollmentClusterUnit enrollmentClusterUnit : enrollmentClusterUnits) {
+			if (enrollmentClusterUnit.getEnrollment().getStatus().toString().equals("ENROLLED")) {
+				List<DeliverableUser> deliverableUsers = deliverableUserService.getDeliverableUserByECU(enrollmentClusterUnit.getId());
+				for (DeliverableUser deliverableUser : deliverableUsers) {
+					if (deliverableUser.getDate().toLocalDate().isAfter(realClusterPeriod.getEndDate())) {
+						toSubtract++;
+						if (!deliverableUser.isAccepted() && !deliverableUser.isDelivered()) {
+							toSubtractOpen++;
+						}
+						if (!deliverableUser.isAccepted() && deliverableUser.isDelivered()) {
+							toSubtractWaiting++;
+						}
+						if (deliverableUser.isAccepted() && deliverableUser.isDelivered()) {
+							toSubtractAccepted++;
+						}
+					}
+				}
+			}
+		}
+		toSubtractList.add(toSubtract);
+		toSubtractList.add(toSubtractOpen);
+		toSubtractList.add(toSubtractWaiting);
+		toSubtractList.add(toSubtractAccepted);
+
+		return toSubtractList;
+	}
+```
+
+Deze functie loopt door alle "enrollmentClusterUnits" (d.w.z. vakken van een specifieke student) heen; in het geval dat deze later beginnen dan de einddatum van het huidige semester (en dus niet openstaan), worden de deliverables hiervan geteld. Deze getallen worden dan in een lijst gezet, en worden in andere functies van elke set deliverables afgetrokken.
+
+Ik ben vooral blij dat ik de code relatief compact heb kunnen maken; voordat ik op deze oplossing kwam, was deze functie verscheidene keren groter, omdat ik voor elke type deliverable afzonderlijk checkte welke toekomstig waren.
+
+Verder ben ik trots op de manier waarop ik de export van spreadsheets voor de FBE heb gemaakt; hoewel dit niet heel moelijk was, had ik het nog nooit eerder gedaan, en het is mij evengoed binnen een paar dagen helemaal gelukt.
+
+<a href="./assets/immigration-export_2025-02-28_0946.xlsx">Hier</a> is een geschoonde kopie (zonder herleidbare persoonlijke data) van de spreadsheet voor inkomende studenten te zien; dit demonstreert het werk dat ik eraan heb gedaan.
+
+Tenslotte ben ik trots op de manier waarop ik het sorteren van tabellen mogelijk heb gemaakt; ik heb voor elke categorie waarop kan worden gesorteerd een aparte klasse aangemaakt, en ik heb dit toegevoegd, waardoor rijen met dezelfde waardes voor hetgene waaorp wordt geselecteerd niet worden weggegooid:
+
+```java
+			if (o1.getEnrollmentClusterUnits().get(0).getEndDate().equals(o2.getEnrollmentClusterUnits().get(0).getEndDate())) {
+				return Comparator.comparing(EnrollmentClusterUnit::getStartDate)
+						.compare(o1.getEnrollmentClusterUnits().get(0), o2.getEnrollmentClusterUnits().get(0));
+			}
+```
+Dit is een voorbeeld voor de einddatum van enrollmentClusterUnits; als de einddatum hetzelfde is (wat heel vaak gebeurt), worden ze in plaats daarvan vergeleken op hun id in de database, en omdat er nooit twee objecten met hetzelfde id in een tabel zijn, lost dit het probleem op.
+
 </body>
-</html>
+</html
