@@ -18,7 +18,93 @@ De website die wij hebben gemaakt heet VanDeStreek. De thuispagina ziet er als v
 
 Met de zoekbalk is het mogelijk om resultaten te vinden voor een bepaalde gemeente.
 
-<img src="./assets/Verkiezingswebsite.png" />
+Vanaf de header kan de gebruiker naar de pagina met partijen gaan; hier is een samenvatting van elke partij die heeft meegedaan te zien, en als er op een partij wordt geklikt, zijn er details over te zien, zoals de partijleden.
+
+Als de gebruiker naar de "Regio's"-pagina gaat, kan de gebruiker een post plaatsen over een bepaalde provincie en hierbij aangeven over welke partijen het gaat, zoals hier te zien is:
+
+<img src="./assets/Verkiezing 3.png" />
+
+<img src="./assets/Verkiezing 4.png" />
+
+De gebruiker kan zich verder registreren en inloggen:
+
+<img src="./assets/Verkiezing 5.png" />
+
+Er is ook een profielpagina, waar een profielafbeelding kan worden geüpload, en de gebruiker details zoals gemeente,  adres en favoriete regio kan invullen.
+
+Tenslotte is er een pagina waar de data van de verkiezingen wordt weergegeven, die via de "Kaart Nederland" knop is te bereiken:
+
+<img src="./assets/Verkiezing 6.png" />
+
+Hier is het mogelijk verschillende kaarten met resultaten te bekijken. De standaardkaart, die hierboven is te zien, laat de winnaar per gemeente zien, met een legenda.
+
+Door op de knop "Kaarten" te drukken, komt een menu met de andere kaarten tevoorschijn.
+
+<img src="./assets/Verkiezing 7.png" />
+
+De kaart "Een-na-grootste partij" toont de partij die de een-na-grootste is geworden, per gemeente:
+
+<img src="./assets/Verkiezing 8.png" />
+
+De kaart "Grootste partij t.o.v. landelijk gemiddelde" toont de partijen die het meest oververtegenwoordigd zijn in een gemeente; de bedoeling hiervan is uitschieters te laten zien:
+
+<img src="./assets/Verkiezing 9.png" />
+
+De kaart "Ongeldige stemmen" toont hoeveel ongeldige stemmen er per duizend in elke gemeente zijn geweest:
+
+<img src="./assets/Verkiezing 10.png" />
+
+De optie "Taartdiagram" toont een taartdiagram met de algemene uitslag van de verkiezingen:
+
+<img src="./assets/Verkiezing 11.png" />
+
+Als de gebruiker voor de optie "Bekijk deze kaarten als tabel" kiest, komt hij op deze pagina terecht:
+
+<img src="./assets/Verkiezing 12.png" />
+
+Het is mogelijk deze tabel te filteren op alfabetische volgorde van gemeentes, op het aantal geldige stemmen, en op het aantal en percentage ongeldige stemmen.
+
+<img src="./assets/Verkiezing 13.png" />
+
+Het is ook mogelijk op een bepaalde gemeente te filteren met de zoekbalk.
+
+Om naar de kaarten terug te gaan, kan de gebruiker op de knop "Bekijk deze data op een kaart." klikken.
+
+<h2>Waarop ben ik trots?</h2>
+
+Ik ben trots op de manier waarop ik de data die wij hebben gekregen hebben verwerkt. Wij hadden enkele zeer grote bestanden met de ruwe data van de verkiezingen gekregen; om deze goed in de database te krijgen, moest ik redelijk wat aanpassingen maken aan de parser die ons was gegeven. 
+Tijdens het invullen van de database bleef de parser steken; ik heb dit uitgezocht, en het bleek een probleem met de encoding te zijn, waardoor letters zoals "ö" en "ł" niet goed werden ingelezen. Ik heb deze letters omgezet in een vorm die wel leesbaar was, en dit zorgde ervoor dat ik uiteindelijk alle data kon invoeren.
+
+Ik ben verder ook trots op de afbeeldingen die ik heb gemaakt. Aangezien het niet te doen zou zijn alle 352 gemeenten handmatig in te vullen, heb ik een SVG bestand van alle gemeenten gedownload. Vervolgens heb ik een Python-bestand aangemaakt dat het aantal (of percentage) stemmen voor een bepaalde categorie uit een tekstbestand las, de bron SVG aan de hand hiervan inkleurde, en de bron dan in een ander bestand opsloeg. Deze bron kon ik toen online in een SVG en daarna een PNG omzetten.
+Deze bestanden heb ik daarna in de website gebruikt. Het Python-bestand dat ik heb gebruikt is <a href="/assets/Verkiezings Python.py">hier</a> te vinden:
+
+Ik ben uiteindelijk nog trots op de manier waarop ik de tabel heb laten werken, in het bijzonder over de "volgende" en "vorige" knoppen. Ik had redelijk wat moeite om ze te verbergen als ze niet nodig waren, maar ik heb uiteindelijk de staten "firstPageNotLoaded" (om aan te geven wanneer de "vorige" knop moet verschijnen) en "lastPageNotLoaded" (om aan te geven wanneer de "volgende" knop moet verschijnen) toegevoegd.
+Ik heb deze als volgt gebruikt:
+
+```vue
+      firstPageNotLoaded: false,
+      lastPageNotLoaded: true,
+    ...
+    async increaseNumber() {
+    ...
+    if (this.numberRows >= 340) {
+        this.lastPageNotLoaded = false
+      }
+      if (this.numberRows > 0) {
+        this.firstPageNotLoaded = true
+      }
+    }
+    ...
+    async decreaseNumber() {
+    ...
+    if (this.numberRows < 360) {
+        this.lastPageNotLoaded = true
+      }
+      if (this.numberRows < 20) {
+        this.firstPageNotLoaded = false
+      }
+    }
+```
 
 </body>
 </html>
