@@ -396,5 +396,79 @@ Helemaal onderaan de pagina kan het spel ook overnieuw worden gestart.
 
 <h2>Waarop ben ik trots?</h2>
 
+Ik ben ten eerste trots op het kaartspel dat ik met een teamgenoot heb gemaakt, aangezien dit de eerste keer is dat ik zo'n fysiek prototype heb gemaakt. Ik heb verder het kaartspel fysiek gemaakt, door de kaartjes zorgvuldig uit te knippen en fiches te regelen, en ik heb het op de Kennisparade ook enkele keren gespeeld met geïnteresseerde bezoekers. Het is mij dus goed gelukt met dit prototype aan de slag te gaan terwijl ik nog nooit zoiets heb getest.
+
+Voor de applicatie die wij nu hebben, heb ik goed gewerkt aan scenario 3. Voor keuze A heb ik de effecten van het virus aanzienlijk verbeterd; de oorspronkelijke versie van het omkeren van tekst keerde bijvoorbeeld de elementen op de pagina om, in plaats van de tekst zelf. Ik heb hier later, nadat deze functie was herzien, opnieuw ingegrepen; de functie was toen herschreven naar dit:
+
+```javascript
+export function reverseText(str) {
+    return [...str].reverse().join('');
+}
+```
+Maar dit zorgde ervoor dat de emoji ⚠️ niet goed werkte, doordat de <a href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)">variatieselector</a> achter de emoji kwam te staan. Om dit op te lossen, heb ik mijn eerdere methode toegepast:
+
+```javascript
+export function reverseText(str) {
+    const rtl = String.fromCodePoint(0x202E);
+    const reversedString = rtl + str;
+
+    return reversedString;
+}
+```
+Hier zet ik de textrichting van rechts naar links, wat het bovenstaande probleem oplost en net zo goed werkt. Ik ben er trots op dat ik beide keren de reden achter het probleem heb gevonden en de juiste manier heb toegepast.
+
+Ik heb ook aan een ander effect van het virus gewerkt, namelijk <a href="https://en.wikipedia.org/wiki/Mojibake">mojibake</a>. Oorspronkelijk was er geen sprake van echte mojibake; letters werden vervangen door tekens die in mojibake voorkomen, maar dit was geheel voorspelbaar, en er kwamen geen encodings aan te pas. Om dit op te lossen, heb ik besloten wel echte encodings te gebruiken; hieruit bleek dat dit niet veel zou uithalen, omdat gewone tekens niet worden aangepast. Om dit voor elkaar te krijgen, zet ik eerst een paar letters om in letters met accenten, die dan wel mojibake ondergaan.
+
+Hier is te zien hoe ik dit heb geïmplementeerd:
+
+```javascript
+export function mojibake(str) {
+
+  let str_1 = str.replace("e", "é");
+  let str_2 = str_1.replace("v", "ø");
+  let str_3 = str_2.replace("r", "ä1");
+  let str_4 = str_3.replace("a", "æ©");
+  let str_5 = str_4.replace("n", "ñ");
+
+
+  const encoder = new TextEncoder('shift-jis');
+  const encodedText = encoder.encode(str_5);
+
+  const random = Math.random();
+  let decodedText = "";
+
+  if (random < 0.3333) {
+      const decoder = new TextDecoder('arabic');
+      decodedText = decoder.decode(encodedText);
+  } else if (random >= 0.3333 && random <= 0.6666) {
+      const decoder = new TextDecoder('us-ascii');
+      decodedText = decoder.decode(encodedText);
+  } else {
+      const decoder = new TextDecoder('greek');
+      decodedText = decoder.decode(encodedText);
+  }
+
+  return decodedText;
+}
+```
+
+Bovenaan zet ik een paar gewone letters om in tekenreeksen die kunnen worden aangetast. Hierna gebruik ik "shift-jis" (een encoding voor het Japanse schrift) als een encoding voor de tekst, en decodeer ik het naar een Arabische encoding, een Griekse encoding, of US-ASCII. Door drie verschillende encodings te gebruiken wordt de mojibake minder voorspelbaar, wat ons doel goed dient.
+Samengevat, ben ik blij dat ik nu zelf overtuigende mojibake heb weten te maken.
+
+Ik ben verder trots op de manier waarop ik het eindscherm heb verbeterd. De vier scenario's waren oorspronkelijk niet eerlijk verdeeld; om uit te zoeken hoe dit precies werkte, heb ik het grootste deel van de 64 mogelijk combinaties handmatig doorgespeeld. Hieruit kwam dat "de fatalist" 33 keer voorkomt, "de optimist" 23 keer, "de voorzichtige" 8 keer, en "de onderhandelaar" geen enkele keer. Dit is duidelijk niet hoe de profielen verdeeld horen te zijn.
+Om dit te verbeteren, heb ik zelf een nieuwe manier ontworpen om de scenario's te verdelen: "de voorzichtige" komt nu voor als de gebruiker de "voorzichtige" keuzes bij scenario's 3 en 6; "de optimist" als de gebruiker bij vier of meer gevallen de actieve keuze maakt; "de fatalist" als de gebruiker in vier of meer gevallen niets doet; en "de onderhandelaar" voor alle andere gevallen, waar er geen duidelijk patroon is.
+Hierdoor komt "de fatalist" 17 keer voor; "de onderhandelaar" 20 keer; "de optimist" 11 keer; en "de voorzichtige" 16 keer.
+
+Ik heb verder ook de berekeningen voor hoeveel tijd de gebruiker verliest en hoeveel pop-ups er verschijnen allemaal nagerekend en bijgewerkt. Deze klopten niet allemaal; zo nam de berekening voor de CPU-pop-ups oorspronkelijk aan dat er eentje per uur zou verschijnen, in plaats van eentje per 10 seconden. Hierdoor was de waarde 1460 in plaats van de correcte 525600. Door deze berekeningen na te lopen, heb ik de impact van de keuzes van de gebruiker veel duidelijker gemaakt, wat belangrijk is voor ons project.
+
+Tenslotte heb ik het ontwerp van de pagina met de gesprekken tussen de AI's aangepast. Oorspronkelijk zag deze pagina er zo uit:
+
+<img src="./assets/AI's.png" />
+
+Er was alleen witte tekst voor alle AI's, en zij hadden allemaal hetzelfde lettertype, wat het moeilijk maakte ze te onderscheiden. Ik heb daarom gekozen voor een witte kleur voor de gebruiker (omdat dit de "standaard" kleur is), een grijze kleur voor het repair-café (omdat dit als "ouderwets" kan worden gezien), een groene kleur voor de repair-shop (om gebruikers licht te misleiden over hun bedoelingen), en een gele kleur voor het systeem, voor een goed contrast met de andere kleuren.
+Qua lettertype heb ik voor de gebruiker voor een "neutraal" lettertype gekozen (namelijk Verdana), voor het repair-café een "ouderwets" lettertype (Times New Roman), voor het systeem Calibri, aangezien dit het standaardlettertype van Microsoft Office was, en voor de repair-shop een opvallend font (waarbij mijn keuze is gevallen op <a href="https://fonts.google.com/specimen/Quicksand?preview.script=Latn">Quicksand</a>)
+
+<h1>Welke vaardigheden demonstreer ik hiermee?</h1>
+
 </body>
 </html>
