@@ -5,219 +5,305 @@
 <h1>Parkeerplaats DMH</h1>
 
 <h2>Context voor en rol binnen het project</h2>
-
 Ik heb dit project gedaan voor de studio Smart Cities van de HvA. De opdrachtgevers voor dit project waren de beheerders van het Dokter Meurerhuis (DMH), het gebouw van de campus Sport en Voeding van de HvA. De gemeente Amsterdam had voor het begin van het semester vastgesteld dat er voor de parkeerplaats van het DMH betaald moest worden; aangezien de beheerders dit niet fijn vonden, hebben zij een deel van de parkeerplaats voor zichzelf geclaimd.
 De beheerders wilden nu graag inzicht krijgen in het gebruik van deze parkeerplaats, omdat deze behoorlijk klein was en relatief vaak vol zat; behalve het aantal auto's in de parkeerplaats, wilden zij graag informatie over bijv. het gebruik van de elektrische oplaadplaatsen, invalidenplaatsen, wanneer nooduitgangen zijn geblokkeerd, en wanneer auto's te dicht bij de ventilatiepoorten staan.
 Hiervoor wilden zij sensoren op de parkeerplaats hebben, samen met een dashboard.
-
+<br />
+<br />
 Aangezien ik de enige persoon met het profiel "Back-end Developer" in de groep was, heb ik mij vooral gericht op het bouwen van de website, en ik heb hiervan het grootste deel gemaakt: de database die wij gebruikten, het grootste gedeelte van de backendlogica, en het eigenlijke dashboard.
-
+<br />
+<br />
 <h2>Omschrijving en afbeeldingen</h2>
-
+<br />
+<br />
 De website die wij hebben gemaakt bestaat uit een dashboard waarop de staat van de parkeerplaats kan worden gezien, en verscheidene pagina's met een samenvatting van data die erover is verzameld. Het is ons alleen gelukt een website te bouwen die het aantal auto's en mogelijk geblokkeerde nooduitgangen laat zien.
-
+<br />
+<br />
 De hoofdpagina ziet er als volgt uit:
-
+<br />
+<br />
 <img src="./assets/Main Page Default.png" />
-
+<br />
+<br />
 Hierop is links een voorspelling van het aantal auto's op dit tijdstip te zien, en in het midden is de data over de huidige staat van de parkeerplaats te zien. Dit is, van boven naar beneden:
-
-* Het aantal auto's op de parkeerplaats (wij hebben de parkeerplaats een capaciteit van 60 gegeven, omdat wij de precieze capaciteit niet hebben kunnen meten).
-* Het aantal vrije plekken.
-* Het percentage plekken dat is bezet.
-
-* De status van de parkeerplaats.
-
-* De temperatuur op de parkeerplaats.
-* De vochtigheidsgraad op de parkeerplaats.
-
+<br />
+<ul>
+    <li>Het aantal auto's op de parkeerplaats (wij hebben de parkeerplaats een capaciteit van 60 gegeven, omdat wij de precieze capaciteit niet hebben kunnen meten).</li>
+    <li>Het aantal vrije plekken.</li>
+    <li>Het percentage plekken dat is bezet.</li>
+<br />
+    <li>De status van de parkeerplaats.</li>
+<br />
+    <li>De temperatuur op de parkeerplaats.</li>
+    <li>De vochtigheidsgraad op de parkeerplaats.</li>
+</ul>
+<br />
+<br />
 Op de afbeelding hierboven is de parkeerplaats rustig; in dat geval is de status "Calm" in groene letters. Naarmate de parkeerplaats drukker wordt, verandert dit:
-
+<br />
+<br />
 <img src="./assets/Main Page Busy.png" />
-
+<br />
+<br />
 Als er meer dan 30 auto's in de parkeerplaats staan, wordt de status "Busy"; dit is in oranje letters weergegeven. 
-
+<br />
+<br />
 <img src="./assets/Main Page Nearly Full.png" />
-
+<br />
+<br />
 Als er meer dan 50 auto's in de parkeerplaats staan, wordt de status "Nearly full", wat in rode letters wordt aangegeven.
-
+<br />
+<br />
 <img src="./assets/Main Page Fulll.png" />
-
+<br />
+<br />
 Als er precies 60 auto's in de parkeerplaats staan, verandert de status in "Full", wat ook in rode letters is aangegeven.
-
+<br />
 Als er dan auto's binnen blijven stromen, verschijnt er aan de rechterkant van de pagina een waarschuwing dat de parkeerplaats overvol is:
-
+<br />
+<br />
 <img src="./assets/Main Page Too Full.png" />
-
+<br />
+<br />
 De tijd hierop geeft aan wanneer de 61ste auto de parkeerplaats op is gereden. Deze waarschuwing verdwijnt zodra er minder dan 61 auto's op de parkeerplaats staan.
-
+<br />
+<br />
 Er kan ook een waarschuwing voor een nooduitgang verschijnen:
-
+<br />
+<br />
 <img src="./assets/Emergency Exit Warning for Exit 1.png" />
-
+<br />
+<br />
 De tijd hiervan geeft aan wanneer de nooduitgang is geblokkeerd.
-
+<br />
+<br />
 Als beide nooduitgangen zijn geblokkeerd, komt de eerdere waarschuwing bovenaan te staan:
-
+<br />
+<br />
 <img src="./assets/Emergency Exit Warning for Both.png" />
-
+<br />
+<br />
 Er is ook een knop om de "buzzer" uit te zetten; wij hebben een systeem gemaakt dat luid zoemt als er iets voor de sensor van de nooduitgang komt, en met deze knop kan deze zoemer uit worden gezet vanaf het dashboard.
-
+<br />
+<br />
 Als er zowel waarschuwingen voor de nooduitgangen als voor een te volle parkeerplaats zijn, komt de waarschuwing voor de nooduitgang bovenaan te staan, aangezien deze dringerder is:
-
+<br />
+<br />
 <img src="./assets/Emergency And Overfull Warning.png" />
-
-
+<br />
+<br />
 Als er een uur lang geen nieuw weer is gemeten op de parkeerplaats, is dit als volgt te zien:
-
+<br />
+<br />
 <img src="./assets/Temp and Humidity No Data.png" />
-
+<br />
+<br />
 Dit is gedaan omdat er anders oud weer zou blijven staan.
-
+<br />
+<br />
 Om de paar maanden verschijnt er een boodschap dat de sensoren moeten worden onderhouden:
-
+<br />
+<br />
 <img src="./assets/Parking Lot 4.png" />
-
+<br />
+<br />
 Deze is te verwijderen door op de knop "Dismiss" te drukken.
-
+<br />
+<br />
 In het geval dat er waarschuwingen staan, komt deze melding onderaan:
-
+<br />
+<br />
 <img src="./assets/Parking Lot 5.png" />
-
+<br />
+<br />
 De meldingen krijgen ook donkerdere kleuren naarmate de melding ernstiger is.
-
----
-
+<br />
+<br />
+<hr />
+<br />
+<br />
 Vanaf deze pagina kan de gebruiker naar andere pagina's navigeren: de "Past occupancy and weather" pagina, de "Emergency exit blockages" pagina, en de "Reports"-pagina.
-
+<br />
+<br />
 Op de eerste pagina is te zien hoe vol de parkeerplaats eerder was, samen met het verleden weer; deze zijn samengevoegd om het mogelijk te maken verbanden tussen het weer en de drukte op de parkeerplaats te zien.
-
+<br />
+<br />
 Deze pagina ziet er als volgt uit:
-
+<br />
+<br />
 <img src="./assets/Parking Lot 1.png" />
-
+<br />
+<br />
 Helemaal bovenaan staan twee datepickers; hiermee is het mogelijk de data in de kaart en tabel op datum te filteren, wat handig is als de gebruiker naar een specifieke periode wil kijken:
-
+<br />
+<br />
 <img src="./assets/Datepicker active.png" />
-
+<br />
+<br />
 De selectie kan hier ook worden verwijderd door opo het kruisje erin te drukken:
-
+<br />
+<br />
+<br />
 <img src="./assets/Datepicker Clear.png" />
-
+<br />
+<br />
 Hieronder kan een selectie worden gemaakt uit uur-, dag-, en weekkaarten van het weer en de bezetting. De uurkaart ziet er als volgt uit:
-
+<br />
+<br />
 <img src="./assets/Chart Occupancy Per Hour.png" />
-
+<br />
+<br />
 De temperatuur wordt hier weergegeven door de rode lijn, de vochtigheidsgraad door de groene lijn, en de bezetting door de blauwe balken. Deze date is hier over de period 07:00-22:00 per uur weergegeven op de dagen maandag tot en met vrijdag. Op deze tijden is de parkeerplaats immers in gebruik.
-
+<br />
+<br />
 De dagkaart toont het gemiddelde van deze data per dag:
-
+<br />
+<br />
 <img src="./assets/Chart Occupancy Per Day.png" />
-
+<br />
+<br />
 Deze is standaard geselecteerd, omdat het de meest relevant kaart is voor de beheerders van het gebouw.
-
+<br />
+<br />
 De weekkaart vat de data per week van het jaar samen; hierin staan alleen de weken waarvoor data beschikbaar is:
-
+<br />
+<br />
 <img src="./assets/Chart Occupancy Per Week.png" />
-
+<br />
+<br />
 Onder de kaarten staat een tabel met deze data per halfuur wanneer het is gemeten:
-
+<br />
+<br />
 <img src="./assets/Occupancy Table.png" />
-
+<br />
+<br />
 <img src="./assets/Occupancy Table 2.png" />
-
-
+<br />
+<br />
+<br />
 Op de tweede pagina is te zien wanneer de nooduitgangen zijn geblokkeerd en welke. Het ziet er als volgt uit:
-
+<br />
+<br />
 <img src="./assets/Emergency Exit Blockages Page.png" />
-
+<br />
+<br />
 Hier is het ook mogelijk om de data op datum te filteren.
-
+<br />
+<br />
 Als een nooduitgang op dit moment geblokkeerd is, is de rechterkolom daar leeg, zoals hier is te zien:
-
+<br />
+<br />
 <img src="./assets/Emergency Exit Page with Missing Row.png.png" />
-
-
+<br />
+<br />
+<br />
 Op de rapportpagina is het mogelijk een rapport met al de voorgaande data te genereren. Het ziet er als volgt uit:
-
+<br />
+<br />
 <img src="./assets/Parking Lot 2.png" />
-
+<br />
+<br />
 Het is hier ook mogelijk om de data op datum te filteren met de datepickers. Het is verder mogelijk om afbeeldingen van de kaarten (voor weer en bezetting), informatie over het weer en de bezetting, en informatie over de nooduitgangen wel of niet in het rapport te zetten, afhankelijk van wat de gebruiker wil.
-
+<br />
+<br />
 Een voorbeeld van zo'n rapport is <a href="./assets/Parking Lot Report.pdf">hier</a> te vinden.
-
+<br />
 <h2>Waarop ben ik trots?</h2>
-
+<br />
+<br />
 Ik ben trots op de kaarten die ik heb gemaakt, aangezien ze er heel goed uitzien en ook interactief zijn; als de gebruiker met de cursor op een datapunt gaat staan, verschijnt er een pop-up:
-
+<br />
+<br />
 <img src="./assets/Parking Lot 3.png" />
-
+<br />
+<br />
 Dit maakt het aanzienlijk makkelijker de datapunten af te lezen in de kaarten. Ik heb verder een duidelijk kleurenschema ervoor gebruikt, en de kaarten hebben een goed onderscheid tussen weer (lijnen) en bezetting (balken). Om dit voor elkaar te krijgen, heb ik redelijk wat aanpassingen aan de basis-kaartelementen van React moeten doen; dit was nieuw voor mij, maar het is goed gelukt.
-
+<br />
+<br />
 Ik ben verder trots op het filteren op datum dat mogelijk is op alle pagina's met data; ik heb dit nog niet eerder vanaf het begin af aan gedaan, en ik heb de functionaliteit er mooi uit laten zien op de pagina's waar het in zit.
-
+<br />
+<br />
 In verband hiermee wil ik ook de aandacht trekken naar de manier waarop ik de datums heb weergegeven, waarvan hier de code is te zien:
-
-```php
-                // Put the time and date in a nice format.
-                // Use day of the week in the report, since that is what is asked of us.
-                if ($report == true) {
-                    array_push($emergencyArray, $emergencyExitDataStartTime->format("l, j M Y H:i:s"));
-                    if ($emergencyExitDataEndTime) {
-                        array_push($emergencyArray, $emergencyExitDataEndTime->format("l, j M Y H:i:s"));
-                    }
-                } else {
-                    array_push($emergencyArray, $emergencyExitDataStartTime->format("j F Y H:i:s"));
-                    if ($emergencyExitDataEndTime) {
-                        array_push($emergencyArray, $emergencyExitDataEndTime->format("j F Y H:i:s"));
-                    }
-                }
-```
+<br />
+<br />
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Put the time and date in a nice format.</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Use day of the week in the report, since that is what is asked of us.</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($report == true) {</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataStartTime->format("l, j M Y H:i:s"));</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($emergencyExitDataEndTime) {</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataEndTime->format("l, j M Y H:i:s"));</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataStartTime->format("j F Y H:i:s"));</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($emergencyExitDataEndTime) {</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataEndTime->format("j F Y H:i:s"));</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br />
+</code>
+<br />
+<br />
 Vanaf een oorspronkelijk format van "2025-10-12 12:34:34" zet ik de datum hier om in "12 October 2025 12:34:34" op de webpagina, en "Sunday, 10 Nov 12:34:34" in het rapport. Dit heb ik gedaan omdat onze opdrachtgevers om de weekdag hadden gevraagd in het rapport; ik was eerder nog niet heel bekend met verschillende datum-formats, maar het is mij wel gelukt dit te doen.
-
+<br />
+<br />
 Ik ben ook blij met mijn ontwerp voor de verschillende drukteniveaus en kleuren, zoals hierboven uitgelegd.
-
+<br />
+<br />
 Tenslotte ben ik trots op de manier waarop ik het rapport heb gemaakt; ik heb bijvoorbeeld een redelijke tijd aan de marges van de tabel met nooduitgangblokkades gewerkt om zelfs de langste data op een enkele regel te laten passen.
-
+<br />
+<br />
 De kaarten in het rapport zorgden ook voor een grote uitdaging; omdat ze niet strikt genomen afbeeldingen zijn, bleek het onpraktisch om ze op te slaan en dan in het rapport te stoppen. Uiteindelijk was het nodig de kaarten op dezelfde pagina als het rapport neer te zetten, de representatie in base-64 naar de backend te sturen, en deze dan te decoderen en in het rapport te plaatsen. De code daarvoor is hier te zien:
-
-```php
-            $imgHourData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgHour);
-            $imgHour = '<img src="@' . $imgHourData . '">';
-
-            $imgDayData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgDay);
-            $imgDay = '<img src="@' . $imgDayData . '">';
-
-            $imgWeekData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgWeek);
-            $imgWeek = '<img src="@' . $imgWeekData . '">';
-
-            $pdf->writeHTML($imgHour, true, false, true, false, '');
-            $pdf->writeHTML($imgDay, true, false, true, false, '');
-            $pdf->writeHTML($imgWeek, true, false, true, false, '');
-```
+<br />
+<br />
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgHourData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgHour);</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgHour = '<img src="@' . $imgHourData . '">';</br />
+</br />
+</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgDayData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgDay);</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgDay = '<img src="@' . $imgDayData . '">';</br />
+</br />
+</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgWeekData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgWeek);</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgWeek = '<img src="@' . $imgWeekData . '">';</br />
+</br />
+</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdf->writeHTML($imgHour, true, false, true, false, '');</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdf->writeHTML($imgDay, true, false, true, false, '');</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdf->writeHTML($imgWeek, true, false, true, false, '');</br />
+</code>
+<br />
+<br />
 De inspiratie voor deze code heb ik online gehaald <a href="https://stackoverflow.com/questions/48043581/tcpdf-and-insert-an-image-base64-encoded">van deze bron</a>.
-
+<br />
+<br />
 Om de kaarten op de rapportpagina te verbergen, heb ik de volgende CSS toegepast:
-
-```CSS
-#reportCharts {
-    filter: opacity(0);
-}
-```
-
+<br />
+<br />
+<code>
+#reportCharts {</br />
+&nbsp;&nbsp;&nbsp;&nbsp;filter: opacity(0);</br />
+}</br />
+</code>
+<br />
+<br />
 <h2>Welke vaardigheden heb ik hier laten zien?</h2>
-
+<br />
+<br />
 Ik laat hiermee het volgende zien:
-
-* Kennis van PHP om een groot deel van een backend mee op te zetten.
-* Kennis van React, en specifiek geavanceerd gebruik van de kaartelementen in React.
-* Kennis van TCPDF (de library die is gebruikt om de PDF mee te maken).
-* Kennis van verschillende datum-formats.
-* Gevorderde kennis van React.
-* Dat ik met base-64 afbeeldingen kan werken.
-* Het integreren van sensoren in een webapp.
-* Dat ik een goed product kan leveren onder tijdsdruk (wij moesten veel tijd besteden aan een individueel project, waardoor dit in de knel kwam).
-* Dat het is gelukt een product naar tevredenheid van externe cliënten heb kunnen maken.
+<br />
+<br />
+<ul>
+    <li>Kennis van PHP om een groot deel van een backend mee op te zetten.</li>
+    <li>Kennis van React, en specifiek geavanceerd gebruik van de kaartelementen in React.</li>
+    <li>Kennis van TCPDF (de library die is gebruikt om de PDF mee te maken).</li>
+    <li>Kennis van verschillende datum-formats.</li>
+    <li>Gevorderde kennis van React.</li>
+    <li>Dat ik met base-64 afbeeldingen kan werken.</li>
+    <li>Het integreren van sensoren in een webapp.</li>
+    <li>Dat ik een goed product kan leveren onder tijdsdruk (wij moesten veel tijd besteden aan een individueel project, waardoor dit in de knel kwam).</li>
+    <li>Dat het is gelukt een product naar tevredenheid van externe cliënten heb kunnen maken.</li>
+</ul>
 
 </body>
 </html>
