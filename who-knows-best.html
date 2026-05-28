@@ -6,7 +6,8 @@
 <body>
 
 <a href="./index.html">Ga terug naar hoofdpagina.</a>
-
+<br />
+<br />
 <a href="https://gitlab.fdmci.hva.nl/studio/dark-tech/projects/2025-2026-semester-2/niixoobeebaa88"><b>Link naar repository</b></a>
 
 <h1>Who Knows Best?</h1>
@@ -576,7 +577,8 @@ Voor de applicatie die wij nu hebben, heb ik goed gewerkt aan scenario 3. Voor k
 <br />
 <code>
 export function reverseText(str) {
-&nbsp;&nbsp;return [...str].reverse().join('');
+<br />
+&nbsp;&nbsp;return [...str].reverse().join('');<br />
 }
 </code>
 <br />
@@ -585,8 +587,8 @@ Maar dit zorgde ervoor dat de emoji ⚠️ niet goed werkte, doordat de <a href=
 <br />
 <br />
 <code>
-export function reverseText(str) {
-&nbsp;&nbsp;&nbsp;&nbsp;const rtl = String.fromCodePoint(0x202E);
+export function reverseText(str) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;const rtl = String.fromCodePoint(0x202E);<br />
 &nbsp;&nbsp;&nbsp;&nbsp;const reversedString = rtl + str;
 <br />
 <br />
@@ -629,9 +631,8 @@ export function mojibake(str) {  <br />
 &nbsp;&nbsp;} else {  <br />
 &nbsp;&nbsp;&nbsp;&nbsp;const decoder = new TextDecoder('greek');  <br />
 &nbsp;&nbsp;&nbsp;&nbsp;decodedText = decoder.decode(encodedText);  <br />
-&nbsp;&nbsp;}
-  <br />
-&nbsp;&nbsp;&nbsp;&nbsp;return decodedText;
+&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;return decodedText;<br />
 }
 </code>
 <br />

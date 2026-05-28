@@ -6,7 +6,8 @@
 <body>
 
 <a href="./index.html">Ga terug naar hoofdpagina.</a>
-
+<br />
+<br />
 <a href="https://gitlab.fdmci.hva.nl/studio/smart-cities/projecten/2025-2026-semester-1/smart-cities-group-project/smart-cities-group-project-smart-cities-group-project-GRqB"><b>Link naar repository</b></a>
 
 <h1>Parkeerplaats DMH</h1>
@@ -241,7 +242,6 @@ In verband hiermee wil ik ook de aandacht trekken naar de manier waarop ik de da
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataStartTime->format("j F Y H:i:s"));</br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($emergencyExitDataEndTime) {</br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array_push($emergencyArray, $emergencyExitDataEndTime->format("j F Y H:i:s"));</br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br />
 </code>
 <br />
@@ -260,15 +260,15 @@ De kaarten in het rapport zorgden ook voor een grote uitdaging; omdat ze niet st
 <br />
 <code>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgHourData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgHour);</br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgHour = '<img src="@' . $imgHourData . '">';</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgHour = '&lt;img src="@' . $imgHourData . '"&gt;';</br />
 </br />
 </br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgDayData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgDay);</br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgDay = '<img src="@' . $imgDayData . '">';</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgDay = '&lt;img src="@' . $imgDayData . '"&gt;';</br />
 </br />
 </br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgWeekData = preg_replace('#^data:image/[^;]+;base64,#', '', $encodedImgWeek);</br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgWeek = '<img src="@' . $imgWeekData . '">';</br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imgWeek = '&lt;img src="@' . $imgWeekData . '"&gt;';</br />
 </br />
 </br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdf->writeHTML($imgHour, true, false, true, false, '');</br />
